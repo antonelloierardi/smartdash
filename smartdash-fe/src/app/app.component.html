@@ -1,0 +1,30 @@
+<app-login *ngIf="!isLogged" (eventLogIn)="setLogIn()"></app-login>
+
+<div class="wrapper" *ngIf="isLogged">
+
+  <!-- SIDEBAR -->
+  <app-sidebar></app-sidebar>
+  <!-- END SIDEBAR -->
+
+  <div class="main">
+    <!-- HEADER -->
+    <app-header (eventLogOut)="setLogOut()"></app-header>
+    <!-- END HEADER -->
+
+    <!-- CONTENT -->
+    <main class="content">
+      <div class="container-fluid p-0">
+
+        <!-- <ng-content></ng-content> -->
+        <router-outlet></router-outlet>
+
+      </div>
+    </main>
+    <!-- END CONTENT -->
+
+    <!-- FOOTER-->
+    <app-footer></app-footer>
+    <!-- END FOOTER -->
+
+  </div>
+</div>

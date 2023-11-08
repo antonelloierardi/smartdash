@@ -1,0 +1,141 @@
+import { FormGroup, FormControl, FormArray, Validators } from "@angular/forms";
+
+export const FormCompany = new FormGroup({
+  logo: new FormControl({ value: null, disabled: false }),
+  nameCompany: new FormControl({ value: null, disabled: false }),
+  vatNumber: new FormControl({ value: null, disabled: false }),
+  taxCode: new FormControl({ value: null, disabled: false }),
+  rea: new FormControl({ value: null, disabled: false }),
+  pec: new FormControl({ value: null, disabled: false }),
+  iban: new FormControl({ value: null, disabled: false }),
+  webSite: new FormControl({ value: null, disabled: false }),
+  legalSite: new FormGroup({
+    accountable: new FormControl({ value: null, disabled: false }),
+    address: new FormControl({ value: null, disabled: false }),
+    cap: new FormControl({ value: '', disabled: false }),
+    city: new FormControl({ value: '', disabled: false }),
+    province: new FormControl({ value: '', disabled: false }),
+    tel: new FormControl({ value: null, disabled: false }),
+    mobile: new FormControl({ value: null, disabled: false }),
+    email: new FormControl({ value: null, disabled: false }),
+    lsEployees: new FormControl({ value: null, disabled: false }),
+  }),
+  operatingOffices: new FormArray<any>([]),
+  details: new FormGroup({
+    totalEployees: new FormControl({ value: null, disabled: false }),
+    usersAccount: new FormControl({ value: null, disabled: false }),
+    adminAccount: new FormControl({ value: null, disabled: false }),
+    numClients: new FormControl({ value: null, disabled: false }),
+    companyTurnover: new FormControl({ value: null, disabled: false }),
+  }),
+})
+
+export const FormUser = new FormGroup({
+  _id: new FormControl({ value: '', disabled: false }),
+  companyID: new FormControl({ value: '', disabled: false }, Validators.required),
+  company: new FormControl({ value: '', disabled: false }, Validators.required),
+  photo: new FormControl({ value: null, disabled: false }),
+  name: new FormControl({ value: null, disabled: false }, Validators.required),
+  surname: new FormControl({ value: null, disabled: false }, Validators.required),
+  position: new FormControl({ value: null, disabled: false }, Validators.required),
+  site: new FormControl({ value: null, disabled: false }, Validators.required),
+  address: new FormControl({ value: null, disabled: false }, Validators.required),
+  cap: new FormControl({ value: '', disabled: false }, Validators.required),
+  city: new FormControl({ value: '', disabled: false }, Validators.required),
+  province: new FormControl({ value: '', disabled: false }, Validators.required),
+  email: new FormControl({ value: null, disabled: false }, Validators.required),
+  tel: new FormControl({ value: null, disabled: false }, Validators.required),
+  mobile: new FormControl({ value: null, disabled: false }, Validators.required),
+  role: new FormControl({ value: null, disabled: false }, Validators.required),
+  status: new FormControl({ value: null, disabled: false }, Validators.required),
+  password: new FormControl({ value: null, disabled: false }, Validators.required),
+  repeatPassword: new FormControl({ value: null, disabled: false }, Validators.required),
+});
+
+export const FormClient = new FormGroup({
+  type: new FormControl({ value: '', disabled: false }),
+  status: new FormControl({ value: '', disabled: false }),
+  photo: new FormControl({ value: '', disabled: false }),
+  name: new FormControl({ value: '', disabled: false }),
+  surname: new FormControl({ value: '', disabled: false }),
+  address: new FormControl({ value: '', disabled: false }),
+  cap: new FormControl({ value: '', disabled: false }),
+  city: new FormControl({ value: '', disabled: false }),
+  province: new FormControl({ value: '', disabled: false }),
+  tel: new FormControl({ value: '', disabled: false }),
+  email: new FormControl({ value: '', disabled: false }),
+  mobile: new FormControl({ value: '', disabled: false }),
+  taxCode: new FormControl({ value: '', disabled: false }),
+  pec: new FormControl({ value: '', disabled: false }),
+  nameCompany: new FormControl({ value: '', disabled: false }),
+  vatNumber: new FormControl({ value: '', disabled: false }),
+  rea: new FormControl({ value: '', disabled: false }),
+  legalSite: new FormGroup({
+    accountable: new FormControl({ value: '', disabled: false }),
+    address: new FormControl({ value: '', disabled: false }),
+    cap: new FormControl({ value: '', disabled: false }),
+    city: new FormControl({ value: '', disabled: false }),
+    province: new FormControl({ value: '', disabled: false }),
+    tel: new FormControl({ value: '', disabled: false }),
+    mobile: new FormControl({ value: '', disabled: false }),
+    email: new FormControl({ value: '', disabled: false }),
+    lsEployees: new FormControl({ value: '', disabled: false }),
+  }),
+  operatingOffices: new FormArray<any>([]),
+  details: new FormGroup({
+    totalEployees: new FormControl({ value: '', disabled: false }),
+    usersAccount: new FormControl({ value: '', disabled: false }),
+    adminAccount: new FormControl({ value: '', disabled: false }),
+    numClients: new FormControl({ value: '', disabled: false }),
+    companyTurnover: new FormControl({ value: '', disabled: false }),
+  }),
+  iban: new FormControl({ value: '', disabled: false }),
+  webSite: new FormControl({ value: '', disabled: false }),
+})
+
+export const FormOperatingOffices = new FormGroup({
+  opAccountable: new FormControl({ value: null, disabled: false }, Validators.required),
+  opAddress: new FormControl({ value: null, disabled: false }, Validators.required),
+  opCap: new FormControl({ value: '', disabled: false }, Validators.required),
+  opCity: new FormControl({ value: '', disabled: false }, Validators.required),
+  opProvince: new FormControl({ value: '', disabled: false }, Validators.required),
+  opTel: new FormControl({ value: null, disabled: false }, Validators.required),
+  opEmail: new FormControl({ value: null, disabled: false }, Validators.required),
+  opMobile: new FormControl({ value: null, disabled: false }),
+  opEployees: new FormControl({ value: null, disabled: false }, Validators.required),
+})
+
+export const FormSettings = new FormGroup({
+  companyID: new FormControl({ value: '', disabled: false }),
+  userID: new FormControl({ value: '', disabled: false }),
+  settingsHeader: new FormGroup({
+    formSearch: new FormControl({ value: null, disabled: false }),
+    megaMenu: new FormControl({ value: null, disabled: false }),
+    languages: new FormControl({ value: null, disabled: false }),
+    notifications: new FormControl({ value: null, disabled: false }),
+    messages: new FormControl({ value: null, disabled: false }),
+  }),
+  settingsSidebar: new FormGroup({
+    clienti: new FormControl({ value: false, disabled: false }),
+    vendite: new FormControl({ value: false, disabled: false }),
+    acquisti: new FormControl({ value: false, disabled: false }),
+    organizer: new FormControl({ value: false, disabled: false }),
+    agenda: new FormControl({ value: false, disabled: false }),
+    calendario: new FormControl({ value: false, disabled: false }),
+    marketing: new FormControl({ value: false, disabled: false }),
+    statistiche: new FormControl({ value: false, disabled: false }),
+    messaggi: new FormControl({ value: false, disabled: false }),
+    notifiche: new FormControl({ value: false, disabled: false }),
+  }),
+  settingsFooter: new FormGroup({
+    serviceMenu: new FormControl({ value: false, disabled: false }),
+    helpCenter: new FormControl({ value: false, disabled: false }),
+    privacy: new FormControl({ value: false, disabled: false }),
+    support: new FormControl({ value: false, disabled: false }),
+    terms: new FormControl({ value: false, disabled: false }),
+  }),
+})
+
+export const FormSearch = new FormGroup({
+  inputSearch: new FormControl({ value: null, disabled: false }, Validators.required)
+})

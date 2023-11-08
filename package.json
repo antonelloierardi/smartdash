@@ -1,0 +1,35 @@
+{
+  "name": "smartdash",
+  "version": "0.1.0",
+  "description": "SmartDash, la dasboard intelligente.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently -c \"yellow.bold,green.bold\" -n \"SERVER,CLIENT\" \"npm run start:smartdash-be\" \"npm run start:smartdash-fe\"",
+    "start:smartdash-be": "cd smartdash-be && npm start",
+    "start:smartdash-fe": "cd smartdash-fe && npm start",
+    "prepare": "concurrently \"npm run prepare:smartdash-be\" \"npm run prepare:smartdash-fe\"",
+    "prepare:smartdash-be": "cd smartdash-be && npm install",
+    "prepare:smartdash-fe": "cd smartdash-fe && npm install",
+    "build": "cd smartdash-fe && npm run build",
+    "build:prod": "cd smartdash-fe && npm run build:prod",
+    "test": "npm run prepare && concurrently \"npm run test:smartdash-fe\" \"npm run test:smartdash-be\"",
+    "test:smartdash-fe": "cd smartdash-fe && npm test",
+    "test:smartdash-be": "cd smartdash-be && npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://antonelloierardi80@bitbucket.org/ierardiantonello/smartdash.git"
+  },
+  "keywords": [
+    "dashboard"
+  ],
+  "author": "Antonello Ierardi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/antonelloierardi/smartdash/issues"
+  },
+  "homepage": "https://bitbucket.org/antonelloierardi/smartdash#readme",
+  "devDependencies": {
+    "concurrently": "^7.1.0"
+  }
+}

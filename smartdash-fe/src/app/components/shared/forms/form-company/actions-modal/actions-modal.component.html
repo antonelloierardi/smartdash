@@ -1,0 +1,84 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="formOperatingOffices">
+    <div class="row mt-2 g-3">
+      <!-- <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        Aggiungi una nuova sefde operativa
+        <div class="float-end">
+          <div class="position-relative">
+            <a (click)="removeOpSite()">
+              <i-feather class="align-middle" name="x-circle"></i-feather>
+            </a>
+          </div>
+        </div>
+      </div> -->
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-8">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opAccountable" placeholder="Responsabile" formControlName="opAccountable">
+          <label for="accountable">Responsabile</label>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opEployees" placeholder="Dipendenti" formControlName="opEployees">
+          <label for="lsEployees">Dipendenti</label>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opAddress" placeholder="Indirizzo" formControlName="opAddress">
+          <label for="opAddress">Indirizzo</label>
+        </div>
+      </div>
+
+
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-5">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opCity" placeholder="Comune" formControlName="opCity">
+          <label for="opCity">Comune</label>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opCap" placeholder="Cap" formControlName="opCap">
+          <label for="opCap">Cap</label>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opProvince" placeholder="Prov." formControlName="opProvince">
+          <label for="opProvince">Prov.</label>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opEmail" placeholder="Email" formControlName="opEmail">
+          <label for="opEmail">Email</label>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opTel" placeholder="Tel" formControlName="opTel">
+          <label for="opTel">Tel</label>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" id="opMobile" placeholder="Cell." formControlName="opMobile">
+          <label for="opMobile">Cell.</label>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer d-flex justify-content-between">
+  <button type="button" class="btn btn-danger" (click)="close('close')">Chiudi</button>
+  <button type="button" class="btn btn-success" (click)="close('confirm')" [disabled]="formOperatingOffices.invalid">Conferma</button>
+</div>
+

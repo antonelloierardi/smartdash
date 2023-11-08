@@ -1,0 +1,102 @@
+.navbar {
+  --bs-navbar-padding-x: 1.25rem;
+  --bs-navbar-padding-y: 0.875rem;
+  border-bottom: 0;
+  box-shadow: 0 0 2rem 0 rgba(41, 48, 66, 0.1);
+}
+
+.navbar-align {
+  margin-left: auto;
+}
+
+.navbar-bg {
+  background: #fff !important;
+}
+
+
+.navbar .form-control {
+  max-width: 200px;
+}
+
+.navbar-collapse {
+  align-items: center;
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+
+/* .navbar-nav-scroll {
+  max-height: var(--bs-scroll-height, 75vh);
+  overflow-y: auto;
+}
+
+.navbar-expand .navbar-nav-scroll {
+  overflow: visible;
+} */
+
+.navbar-nav .dropdown-menu {
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.05);
+}
+
+.nav-item .indicator {
+  background: #3f80ea;
+  border-radius: 50%;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.05);
+  color: #fff;
+  display: block;
+  font-size: 0.675rem;
+  height: 18px;
+  padding: 1px;
+  position: absolute;
+  right: -8px;
+  text-align: center;
+  top: 0;
+  transition: top 0.1s ease-out;
+  width: 18px;
+}
+
+.nav-item:hover .indicator {
+  top: -4px;
+}
+
+.nav-item a:focus {
+  outline: 0;
+}
+
+.nav-flag,
+.nav-icon {
+  color: #6c757d;
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  padding: 0.1rem 0.8rem;
+  transition: background 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+.nav-flag:after,
+.nav-icon:after {
+  display: none !important;
+}
+
+.nav-flag.active,
+.nav-flag:hover,
+.nav-icon.active,
+.nav-icon:hover {
+  color: #3f80ea;
+}
+
+.nav-flag .feather,
+.nav-flag svg,
+.nav-icon .feather,
+.nav-icon svg {
+  height: 20px;
+  width: 20px;
+}
+
+.nav-flag img {
+  border-radius: 50%;
+  height: 20px;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 20px;
+}

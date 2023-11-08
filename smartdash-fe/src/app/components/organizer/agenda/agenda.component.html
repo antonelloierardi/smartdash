@@ -1,0 +1,50 @@
+<h1 class="h3 mb-3">Agenda</h1>
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-header">
+					<!-- <h5 class="card-title mb-0">Empty card</h5> -->
+          <a (click)="setAction('Attenzione','deleteAll')" [class.disabled]="!agenda.length"> <b class="text-danger">Svuota</b> </a>
+          <div class="float-end">
+            <div class="position-relative">
+              <a (click)="setAction('prova')">
+                <i-feather class="align-middle" name="plus-circle"></i-feather>
+              </a>
+            </div>
+          </div>
+				</div>
+				<div class="card-body">
+          <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col" colspan="3">Descrizione</th>
+                <th scope="col">Stato</th>
+                <th scope="col">Azioni</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let voce of agenda">
+                <th scope="row" (click)="setAction('Dettaglio','detail',voce)">{{voce.date| date:'dd/MM/yyyy'}}</th>
+                <td colspan="3" style="word-break:break-all; width: 100%;" (click)="setAction('Dettaglio','detail',voce)">{{voce.description}}</td>
+                <td>
+                  <div class="form-check d-flex justify-content-center">
+                    <input class="form-check-input" type="checkbox" id="flexCheckChecked" [checked]="voce.completed === true" (click)="update({data:voce},true)">
+                  </div>
+                </td>
+                <td style="min-width: 100px;">
+                  <i-feather name="trash" class="icon-danger me-2" (click)="setAction('Elimina','delete',voce)" placement="top" ngbTooltip="Delete"></i-feather>
+                  <i-feather name="edit-2" class="icon-primary" (click)="setAction('Aggiorna','update',voce)" placement="top" ngbTooltip="Modify"></i-feather>
+
+                </td>
+              </tr>
+              <tr class="text-center" *ngIf="!agenda.length">
+                <th scope="row" colspan="7">Nessuna voce presente</th>
+              </tr>
+            </tbody>
+          </table>
+
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,191 @@
+<nav class="navbar navbar-expand navbar-light navbar-bg">
+  <a id="sidebar-toggle" class="sidebar-toggle">
+    <i class="menu align-self-center"></i>
+  </a>
+
+  <form class="d-none d-sm-inline-block" [formGroup]="formSearch" *ngIf="settings && settings.settingsHeader.formSearch">
+    <div class="input-group input-group-navbar">
+      <input type="text" class="form-control" placeholder="Cerca…" aria-label="Cerca" formControlName="inputSearch">
+      <button class="btn" type="button" [disabled]="formSearch.invalid">
+        <i-feather class="align-middle" name="search"></i-feather>
+      </button>
+    </div>
+  </form>
+
+  <!-- Menu -->
+  <ul class="navbar-nav" *ngIf="settings && settings.settingsHeader.megaMenu">
+    <li class="nav-item px-2 dropdown">
+      <a class="nav-link dropdown-toggle" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Menu
+      </a>
+      <div class="dropdown-menu dropdown-menu-start" aria-labelledby="menuDropdown">
+        <div class="d-md-flex align-items-start justify-content-start">
+          <div class="dropdown-menu-list" *ngFor="let item of megaMenu">
+            <div class="dropdown-header">{{item.nameTitle}}</div>
+            <a *ngFor="let el of item.items" class="dropdown-item" [routerLink]="el.routeItem">{{el.nameItem}}</a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <!-- fine Menu -->
+
+  <div class="navbar-collapse collapse">
+    <ul class="navbar-nav navbar-align">
+      <!-- Messaggi -->
+      <li class="nav-item dropdown" *ngIf="settings && settings.settingsHeader.messages">
+        <a class="nav-icon dropdown-toggle" id="messagesDropdown" data-bs-toggle="dropdown">
+          <div class="position-relative">
+            <i-feather name="message-circle"></i-feather>
+            <span class="indicator">4</span>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
+          <div class="dropdown-menu-header">
+            <div class="position-relative">
+              4 New Messages
+            </div>
+          </div>
+          <div class="list-group">
+            <a href="#" class="list-group-item">
+              <div class="row g-0 align-items-center">
+                <div class="col-2">
+                  <img src="assets/images/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Ashley Briggs">
+                </div>
+                <div class="col-10 ps-2">
+                  <div class="text-dark">Ashley Briggs</div>
+                  <div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu
+                    tortor.</div>
+                  <div class="text-muted small mt-1">15m ago</div>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item">
+              <div class="row g-0 align-items-center">
+                <div class="col-2">
+                  <img src="assets/images/avatars/avatar-2.jpg" class="avatar img-fluid rounded-circle" alt="Carl Jenkins">
+                </div>
+                <div class="col-10 ps-2">
+                  <div class="text-dark">Carl Jenkins</div>
+                  <div class="text-muted small mt-1">Curabitur ligula sapien euismod
+                    vitae.</div>
+                  <div class="text-muted small mt-1">2h ago</div>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item">
+              <div class="row g-0 align-items-center">
+                <div class="col-2">
+                  <img src="assets/images/avatars/avatar-4.jpg" class="avatar img-fluid rounded-circle" alt="Stacie Hall">
+                </div>
+                <div class="col-10 ps-2">
+                  <div class="text-dark">Stacie Hall</div>
+                  <div class="text-muted small mt-1">Pellentesque auctor neque nec urna.
+                  </div>
+                  <div class="text-muted small mt-1">4h ago</div>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="list-group-item">
+              <div class="row g-0 align-items-center">
+                <div class="col-2">
+                  <img src="assets/images/avatars/avatar-3.jpg" class="avatar img-fluid rounded-circle" alt="Bertha Martin">
+                </div>
+                <div class="col-10 ps-2">
+                  <div class="text-dark">Bertha Martin</div>
+                  <div class="text-muted small mt-1">Aenean tellus metus, bibendum sed,
+                    posuere ac, mattis non.</div>
+                  <div class="text-muted small mt-1">5h ago</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="dropdown-menu-footer">
+            <a href="#" class="text-muted">Show all messages</a>
+          </div>
+        </div>
+      </li>
+      <!-- fine Messaggi -->
+      <!-- Notifiche -->
+      <li class="nav-item dropdown" *ngIf="settings && settings.settingsHeader.notifications">
+        <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
+          <div class="position-relative">
+            <i-feather name="bell"></i-feather>
+            <span *ngIf="notifications.length" class="indicator">{{notifications.length}}</span>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+          <div class="dropdown-menu-header">
+            {{notifications.length}} nuove notifiche
+          </div>
+          <div class="list-group">
+            <a class="list-group-item" *ngFor="let not of notifications">
+              <div class="row g-0 align-items-center">
+                <div class="col-2">
+                  <i-feather [class]="not.type" [name]="not.icon"></i-feather>
+                </div>
+                <div class="col-10">
+                  <div class="text-dark">{{not.title}}</div>
+                  <div class="text-muted small mt-1">{{not.text}}</div>
+                  <div class="text-muted small mt-1">{{not.date}}</div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="dropdown-menu-footer">
+            <a href="#" class="text-muted">Tutte le notifiche</a>
+          </div>
+        </div>
+      </li>
+      <!-- fine Notifiche -->
+      <!-- Lingua -->
+      <li class="nav-item dropdown" *ngIf="settings && settings.settingsHeader.languages">
+        <a class="nav-flag dropdown-toggle" id="languageDropdown" data-bs-toggle="dropdown">
+          <img [src]="languages[0].imgFlag" alt="Italiano" />
+        </a>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+          <a class="dropdown-item" *ngFor="let lang of languages">
+            <img [src]="lang.imgFlag" alt="{{lang.language}}" width="20" class="align-middle me-1" />
+            <span class="align-middle">{{lang.language}}</span>
+          </a>
+        </div>
+      </li>
+      <!-- fine Lingua -->
+      <!-- Profilo -->
+      <li class="nav-item dropdown" *ngIf="user">
+        <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" data-bs-toggle="dropdown">
+          <i-feather name="user"></i-feather>
+        </a>
+        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" data-bs-toggle="dropdown">
+          <img src="{{user.photo}}" class="avatar img-fluid rounded-circle me-1" alt="" />
+          <!-- <span class="text-dark">Antonello Ierardi</span> -->
+        </a>
+        <div class="dropdown-menu dropdown-menu-end">
+          <a class="dropdown-item">
+            {{user.name}} {{user.surname}}
+          </a>
+          <a *ngIf="user.isAdmin" class="dropdown-item" routerLink="/admin">
+            <i-feather class=" me-1" name="user"></i-feather>
+            Admin
+          </a>
+          <a *ngIf="!user.isAdmin" class="dropdown-item" routerLink="/profile">
+            <i-feather class=" me-1" name="user"></i-feather>
+            Profilo
+          </a>
+          <a class="dropdown-item" routerLink="/analitycs">
+            <i-feather class=" me-1" name="pie-chart"></i-feather>
+            Statistiche
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="/settings">Impostazioni</a>
+          <!-- <a class="dropdown-item">Help</a> -->
+          <a class="dropdown-item" (click)="logOut()">Log out</a>
+        </div>
+      </li>
+      <!-- fine Profilo -->
+    </ul>
+
+  </div>
+</nav>
+

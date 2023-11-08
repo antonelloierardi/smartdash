@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-header">
+      <div class="float-end">
+        <div class="position-relative">
+          <a (click)="createUser()">
+            <i-feather class="align-middle" name="plus-circle"></i-feather>
+          </a>
+        </div>
+      </div>
+    <h5 class="card-title mb-0">Lista Utenti</h5>
+  </div>
+  <div class="card-body h-100">
+    <table id="table-users" class="table" style="width:100%">
+      <thead>
+        <tr>
+          <th colspan="2">Nome</th>
+          <th class="tbl-hiden">Roulo</th>
+          <th class="tbl-hiden">Sede</th>
+          <th class="tbl-hiden">Tel</th>
+          <th>Email</th>
+          <th>Stato</th>
+          <th class="text-end">Azioni</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | slice: (page-1) * pageSize : page * pageSize">
+          <td>
+            <img [src]="user.photo" width="32" height="32" class="rounded-circle my-n1" alt="Avatar">
+          </td>
+          <td>{{user.name}} {{user.surname}}</td>
+          <td class="tbl-hiden">{{user.position}}</td>
+          <td class="tbl-hiden">{{user.site}}</td>
+          <td class="tbl-hiden">{{user.tel}}</td>
+          <td>{{user.email}}</td>
+
+          <td>
+            <span class="badge" [ngClass]="{'bg-success': user.status ==='active','bg-danger':user.status ==='deleted','bg-warning':user.status ==='inactive'}">
+              {{user.status.toUpperCase()}}</span>
+          </td>
+
+          <td>
+            <div class="dropdown position-relative float-end">
+              <a data-bs-toggle="dropdown" data-bs-display="static">
+                <i-feather class="align-middle" name="more-horizontal"></i-feather>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" (click)="getUserDetail(user)">Dettaglio</a>
+                <a class="dropdown-item" (click)="deleteUser(user._id,user.photo)">Elimina</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <app-pagination [page]="page" [pageSize]="pageSize" [collectionSize]="users.length" (pageEvent)="updatePage($event)"></app-pagination>
+    <!-- <div class="row pt-3">
+      <div class="col-sm-12 col-md-5 d-flex align-items-center">
+        Pagina {{page}} di {{users.length}}
+      </div>
+      <div class="col-sm-12 col-md-7 d-flex justify-content-end align-items-center">
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="users.length">
+          <ng-template ngbPaginationPrevious>Indietro</ng-template>
+          <ng-template ngbPaginationNext>Avanti</ng-template>
+        </ngb-pagination>
+      </div>
+    </div> -->
+  </div>
+</div>

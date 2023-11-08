@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row text-muted">
+
+      <div class="col-6 text-start">
+        <ul class="list-inline">
+          <li class="list-inline-item" *ngFor="let el of footerMenu">
+            <a *ngIf="el.name && (settings && settings.settingsFooter[el.control])" class="text-muted" [routerLink]="el.aRouter">{{el.name}}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- <div class="col-6 text-end">
+        <p class="mb-0">
+          &copy; 2023 - <a routerLink="/home" class="text-muted">SmartDash</a>
+        </p>
+      </div> -->
+    </div>
+  </div>
+</footer>

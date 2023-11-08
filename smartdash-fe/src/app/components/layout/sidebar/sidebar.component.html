@@ -1,0 +1,51 @@
+<nav id="sidebar" class="sidebar">
+  <div class="sidebar-content">
+
+    <a class="sidebar-brand">
+      <span class="align-middle me-3" routerLink="/home">SmartDash</span>
+    </a>
+
+    <ul class="sidebar-nav">
+      <li [class]="el.liClass" *ngFor="let el of sidebar">
+        <span *ngIf="el.title">
+          {{el.title}}
+        </span>
+        <a *ngIf="el.link!.aClass && !el.link!.aRouter" attr.data-bs-target="{{el.link!.dataBsTarget}}" attr.data-bs-toggle="{{el.link!.dataBsToggle}}" [class]="el.link!.aClass">
+          <i-feather *ngIf="el.link!.iconName" [name]="el.link!.iconName!"></i-feather>
+          <span *ngIf="el.link!.nameClass" [class]="el.link!.nameClass">{{el.link!.name}}</span>
+          <span *ngIf="el.link!.badgeClass" [class]="el.link!.badgeClass">{{el.link!.badgeName}}</span>
+        </a>
+        <a *ngIf="el.link!.aClass && el.link!.aRouter" [class]="el.link!.aClass" [routerLink]="el.link!.aRouter" routerLinkActive="sidebar-link-active">
+          <i-feather *ngIf="el.link!.iconName" [name]="el.link!.iconName!"></i-feather>
+          <span *ngIf="el.link!.nameClass" [class]="el.link!.nameClass">{{el.link!.name}}</span>
+        </a>
+
+        <ul *ngIf="el.subLink" [id]="el.subLink!.ulId" [class]="el.subLink!.ulClass" attr.data-bs-parent="{{el.subLink!.dataBsParent}}">
+          <li [class]="subLink.liClass" *ngFor="let subLink of el.subLink!.links">
+            <a *ngIf="!subLink.aRouter" [class]="subLink.aClass" attr.data-bs-target="{{subLink.dataBsTarget}}"
+              attr.data-bs-toggle="{{subLink.dataBsToggle}}">
+              {{subLink.name}}
+            </a>
+            <a *ngIf="subLink.aRouter" [class]="subLink.aClass" attr.data-bs-target="{{subLink.dataBsTarget}}" attr.data-bs-toggle="{{subLink.dataBsToggle}}" [routerLink]="subLink.aRouter"
+              routerLinkActive="sidebar-link-active">
+              {{subLink.name}}
+            </a>
+
+            <ul *ngIf="subLink.subLinks" [id]="subLink.subLinks!.ulId" [class]="subLink.subLinks!.ulClass">
+              <li *ngFor="let subLinks of subLink.subLinks!.links" [class]="subLinks.liClass">
+                <a *ngIf="subLinks.aClass" [class]="subLinks.aClass" [routerLink]="subLinks.aRouter" routerLinkActive="sidebar-link-active">
+                  {{subLinks.name}}
+                  <span *ngIf="subLinks.badgeClass" [class]="subLinks.badgeClass">{{subLinks.badgeName}}</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      &copy; 2023 <strong class="ms-1 me-1 d-inline-block">SmartDash</strong> V. 1.0.0
+    </div>
+  </div>
+</nav>

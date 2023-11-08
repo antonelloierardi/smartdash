@@ -1,0 +1,294 @@
+<form [formGroup]="formCompany">
+
+  <div class="row g-3 mb-3">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <img *ngIf="company.logo" [src]="company.logo" alt="{{company.nameCompany}}" height="50px">
+        <img *ngIf="preview" [src]="preview" alt="{{company.nameCompany}}" height="50px">
+      </div>
+      <!-- <input [class.hideInputFile]="isModImg" class="custom-file-input" type="file" id="logo" [formControl]="formCompany.controls.logo" (change)="uploadFile($event)">
+      <p *ngIf="isModImg">
+        <a class="delete" (click)="deleteImage()">Rimuovi</a>
+      </p> -->
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <hr>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="nameCompany" formControlName="nameCompany"
+          placeholder="Nome Azienda">
+        <label for="nameCompany">Nome Azienda</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="companyID" placeholder="ID Azienda" [value]="company._id"
+          disabled>
+        <label for="companyID">ID Azienda</label>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="vatNumber" formControlName="vatNumber" placeholder="Partita Iva">
+        <label for="vatNumber">Partita Iva</label>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="taxCode" formControlName="taxCode" placeholder="Codice Fiscale">
+        <label for="taxCode">Codice Fiscale</label>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="rea" formControlName="rea" placeholder="REA">
+        <label for="rea">REA</label>
+      </div>
+    </div>
+    <!--  -->
+
+    <!--  -->
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="pec" formControlName="pec" placeholder="Pec">
+        <label for="pec">Pec</label>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="iban" formControlName="iban" placeholder="Iban">
+        <label for="iban">Iban</label>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="webSite" formControlName="webSite" placeholder="Sito Web">
+        <label for="webSite">Sito Web</label>
+      </div>
+    </div>
+    <!--  -->
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <hr>
+    </div>
+
+  </div>
+
+  <!-- LegalSite -->
+  <div class="row g-3">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12"><b>Sede Legale</b></div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="accountable"
+          [formControl]="formCompany.controls.legalSite.controls.accountable" placeholder="Responsabile">
+        <label for="accountable">Responsabile</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="lsEployees"
+          [formControl]="formCompany.controls.legalSite.controls.lsEployees" placeholder="Dipendenti">
+        <label for="lsEployees">Dipendenti</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="address"
+          [formControl]="formCompany.controls.legalSite.controls.address" placeholder="Indirizzo">
+        <label for="address">Indirizzo</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-2">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="cap" [formControl]="formCompany.controls.legalSite.controls.cap"
+          placeholder="Cap">
+        <label for="cap">Cap</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="city" [formControl]="formCompany.controls.legalSite.controls.city"
+          placeholder="Comune">
+        <label for="city">Comune</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-1">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="province"
+          [formControl]="formCompany.controls.legalSite.controls.province" placeholder="Prov.">
+        <label for="province">Prov.</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="email" [formControl]="formCompany.controls.legalSite.controls.email"
+          placeholder="Email">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="tel" [formControl]="formCompany.controls.legalSite.controls.tel"
+          placeholder="Tel">
+        <label for="tel">Tel</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-2">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="mobile"
+          [formControl]="formCompany.controls.legalSite.controls.mobile" placeholder="Mobile">
+        <label for="mobile">Mobile</label>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <hr>
+    </div>
+  </div>
+  <!-- End legalSite -->
+
+  <!-- Details -->
+  <div class="row g-3">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12"><b>Dettagli</b></div>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="totalEployees"
+          [formControl]="formCompany.controls.details.controls.totalEployees" placeholder="Dipendenti">
+        <label for="totalEployees">Dipendenti</label>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="usersAccount"
+          [formControl]="formCompany.controls.details.controls.usersAccount" placeholder="Utenti">
+        <label for="usersAccount">Utenti</label>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="adminAccount"
+          [formControl]="formCompany.controls.details.controls.adminAccount" placeholder="Amministratori">
+        <label for="adminAccount">Amministratori</label>
+      </div>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="numClients"
+          [formControl]="formCompany.controls.details.controls.numClients" placeholder="Clienti">
+        <label for="numClients">Clienti</label>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <hr>
+    </div>
+  </div>
+  <!-- End Details -->
+
+  <!-- OperatingOffices -->
+  <div class="row g-3">
+    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10"><b>Sedi Operative</b></div>
+    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2">
+      <div class="float-end">
+        <div class="position-relative">
+          <button class="btn btn-link" style="margin: 0;padding: 0;" (click)="actionOpSite('Nuova Sede Opoerativa','new')" [disabled]="!user.isAdmin">
+            <i-feather class="align-middle" name="plus-circle"></i-feather>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- New Site -->
+
+  <!-- End New Site  -->
+  <div class="row mt-2 g-3" *ngFor="let site of company.operatingOffices; let i = index">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      Sede {{i+1}}
+      <!-- <div class="float-end">
+        <div class="position-relative">
+          <a (click)="delOpSite(i)">
+            <i-feather class="align-middle" name="x-circle"></i-feather>
+          </a>
+        </div>
+      </div> -->
+      <div class="card-actions float-end">
+        <div class="dropdown position-relative">
+          <button class="btn btn-link" style="margin: 0;padding: 0;" data-bs-toggle="dropdown" data-bs-display="static" [disabled]="!user.isAdmin">
+            <i-feather class="align-middle" name="more-horizontal"></i-feather>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item" (click)="actionOpSite('Modifica Sede Opoerativa','mod',site,i)">Modifica</a>
+            <a class="dropdown-item" (click)="delOpSite(i)">Elimina</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opAccountable" placeholder="Responsabile"
+          [(value)]="site.opAccountable" disabled>
+        <label for="accountable">Responsabile</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opEployees" placeholder="Dipendenti" [value]="site.opEployees"
+          disabled>
+        <label for="lsEployees">Dipendenti</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opAddress" placeholder="Indirizzo" [value]="site.opAddress"
+          disabled>
+        <label for="opAddress">Indirizzo</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-2">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opCap" placeholder="Cap" [value]="site.opCap" disabled>
+        <label for="opCap">Cap</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opCity" placeholder="Comune" [value]="site.opCity" disabled>
+        <label for="opCity">Comune</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-1">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opProvince" placeholder="Prov." [value]="site.opProvince" disabled>
+        <label for="opProvince">Prov.</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opEmail" placeholder="Email" [value]="site.opEmail" disabled>
+        <label for="opEmail">Email</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opTel" placeholder="Tel" [value]="site.opTel" disabled>
+        <label for="opTel">Tel</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-2">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="opMobile" placeholder="Cell." [value]="site.opMobile" disabled>
+        <label for="opMobile">Cell.</label>
+      </div>
+    </div>
+  </div>
+  <!-- End OperatingOffices -->
+
+</form>

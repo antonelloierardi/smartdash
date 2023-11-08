@@ -1,0 +1,250 @@
+<h1 class="h3 mb-3">Impostazioni</h1>
+
+<div class="row">
+  <div class="col-md-3 col-xl-2">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Menu</h5>
+      </div>
+      <div class="list-group list-group-flush" role="tablist">
+        <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#tabGeneral" role="tab">
+          Generali
+        </a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#tabHeader" role="tab">
+          Header
+        </a>
+        <a class="list-group-item list-group-item-action disabled" data-bs-toggle="list" href="#tabSidebar" role="tab">
+          Sidebar
+        </a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#tabFooter" role="tab">
+          Footer
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9 col-xl-10">
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="tabGeneral" role="tabpanel">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Generali</h5>
+          </div>
+          <div class="card-body">
+            <app-form-company #viewFormCompany *ngIf="company" [company]="company" [user]="user" (eventFormCompany)="updateCompany($event)"></app-form-company>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary me-2" (click)="modCompany()" [disabled]="!user.isAdmin">Modifica</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="tabHeader" role="tabpanel">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Header</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="formSettings">
+            <div class="form-check form-switch">
+              <input class="form-check-input me-3" type="checkbox" id="formSearch" [formControl]="formSettings.controls.settingsHeader.controls.formSearch"
+                 [value]="formSettings.controls.settingsHeader.controls.formSearch.value">
+              <label class="form-check-label" for="formSearch">
+                Visualizza Form Ricerca
+              </label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input me-3" type="checkbox" id="megaMenu" [formControl]="formSettings.controls.settingsHeader.controls.megaMenu"
+                [value]="formSettings.controls.settingsHeader.controls.megaMenu.value">
+              <label class="form-check-label" for="megaMenu">
+                Visualizza Menu
+              </label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input me-3" type="checkbox" id="languages" [formControl]="formSettings.controls.settingsHeader.controls.languages"
+                [value]="formSettings.controls.settingsHeader.controls.languages.value">
+              <label class="form-check-label" for="languages">
+                Visualizza Lingue
+              </label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input me-3" type="checkbox" id="notifications" [formControl]="formSettings.controls.settingsHeader.controls.notifications"
+                [value]="formSettings.controls.settingsHeader.controls.notifications.value">
+              <label class="form-check-label" for="notifications">
+                Visualizza Notifiche
+              </label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input me-3" type="checkbox" id="messages" [formControl]="formSettings.controls.settingsHeader.controls.messages"
+                [value]="formSettings.controls.settingsHeader.controls.messages.value">
+              <label class="form-check-label" for="messages">
+                Visualizza Messaggi
+              </label>
+            </div>
+          </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary me-2" [disabled]="!user.isAdmin" (click)="updateSettings()">Modifica</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="tabSidebar" role="tabpanel">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Sidebar</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="formSettings">
+              <div class="row g-3">
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input me-3" type="checkbox" id="clienti" [formControl]="formSettings.controls.settingsSidebar.controls.clienti"
+                       [value]="formSettings.controls.settingsSidebar.controls.clienti.value">
+                    <label class="form-check-label" for="clienti">
+                      Clienti
+                    </label>
+                  </div>
+
+                  <div class="form-check form-switch">
+                    <input class="form-check-input me-3" type="checkbox" id="vendite" [formControl]="formSettings.controls.settingsSidebar.controls.vendite"
+                      [value]="formSettings.controls.settingsSidebar.controls.vendite.value">
+                    <label class="form-check-label" for="vendite">
+                      Vendite
+                    </label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input me-3" type="checkbox" id="acquisti" [formControl]="formSettings.controls.settingsSidebar.controls.acquisti"
+                      [value]="formSettings.controls.settingsSidebar.controls.acquisti.value">
+                    <label class="form-check-label" for="acquisti">
+                      Acquisti
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input me-3" type="checkbox" id="organizer" [formControl]="formSettings.controls.settingsSidebar.controls.organizer"
+                      [value]="formSettings.controls.settingsSidebar.controls.organizer.value">
+                    <label class="form-check-label" for="organizer">
+                      Organizer
+                    </label>
+                  </div>
+                  <div class="form-check form-switch ms-2">
+                    <input class="form-check-input form-check-input-sub me-3" type="checkbox" id="agenda" [formControl]="formSettings.controls.settingsSidebar.controls.agenda"
+                      [value]="formSettings.controls.settingsSidebar.controls.agenda.value">
+                    <label class="form-check-label" for="agenda">
+                      Agenda
+                    </label>
+                  </div>
+                  <div class="form-check form-switch ms-2">
+                    <input class="form-check-input form-check-input-sub me-3" type="checkbox" id="calendario" [formControl]="formSettings.controls.settingsSidebar.controls.calendario"
+                      [value]="formSettings.controls.settingsSidebar.controls.calendario.value">
+                    <label class="form-check-label" for="calendario">
+                      Calendario
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input me-3" type="checkbox" id="marketing" [formControl]="formSettings.controls.settingsSidebar.controls.marketing"
+                      [value]="formSettings.controls.settingsSidebar.controls.marketing.value">
+                    <label class="form-check-label" for="marketing">
+                      Marketing
+                    </label>
+                  </div>
+                  <div class="form-check form-switch ms-2">
+                    <input class="form-check-input form-check-input-sub me-3" type="checkbox" id="statistiche" [formControl]="formSettings.controls.settingsSidebar.controls.statistiche"
+                      [value]="formSettings.controls.settingsSidebar.controls.statistiche.value">
+                    <label class="form-check-label" for="statistiche">
+                      Statistiche
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input me-3" type="checkbox" id="messaggi" [formControl]="formSettings.controls.settingsSidebar.controls.messaggi"
+                      [value]="formSettings.controls.settingsSidebar.controls.messaggi.value">
+                    <label class="form-check-label" for="messaggi">
+                      Messaggi
+                    </label>
+                  </div>
+
+                  <div class="form-check form-switch">
+                    <input class="form-check-input me-3" type="checkbox" id="notifiche" [formControl]="formSettings.controls.settingsSidebar.controls.notifiche"
+                      [value]="formSettings.controls.settingsSidebar.controls.notifiche.value">
+                    <label class="form-check-label" for="notifiche">
+                      Notifiche
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary me-2" [disabled]="!user.isAdmin" (click)="updateSettings()">Modifica</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="tabFooter" role="tabpanel">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Footer</h5>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="formSettings">
+
+              <div class="form-check form-switch mb-3">
+                <input class="form-check-input me-3" type="checkbox" id="serviceMenu" [formControl]="formSettings.controls.settingsFooter.controls.serviceMenu"
+                  [value]="formSettings.controls.settingsFooter.controls.serviceMenu.value">
+                <label class="form-check-label" for="serviceMenu">
+                 Attiva Menu di servizio
+                </label>
+              </div>
+
+              <div class="form-check form-switch">
+                <input class="form-check-input me-3" type="checkbox" id="helpCenter" [formControl]="formSettings.controls.settingsFooter.controls.helpCenter"
+                   [value]="formSettings.controls.settingsFooter.controls.helpCenter.value">
+                <label class="form-check-label" for="helpCenter">
+                 Visualizza Help Center
+                </label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input me-3" type="checkbox" id="privacy" [formControl]="formSettings.controls.settingsFooter.controls.privacy"
+                  [value]="formSettings.controls.settingsFooter.controls.privacy.value">
+                <label class="form-check-label" for="privacy">
+                  Visualizza Privacy
+                </label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input me-3" type="checkbox" id="support" [formControl]="formSettings.controls.settingsFooter.controls.support"
+                  [value]="formSettings.controls.settingsFooter.controls.support.value">
+                <label class="form-check-label" for="support">
+                  Visualizza Supporto
+                </label>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input me-3" type="checkbox" id="terms" [formControl]="formSettings.controls.settingsFooter.controls.terms"
+                  [value]="formSettings.controls.settingsFooter.controls.terms.value">
+                <label class="form-check-label" for="terms">
+                  Visualizza Termini e Condizioni
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary me-2" [disabled]="!user.isAdmin" (click)="updateSettings()">Modifica</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

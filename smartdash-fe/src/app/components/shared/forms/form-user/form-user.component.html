@@ -1,0 +1,120 @@
+<form [formGroup]="formUser">
+  <div class="row g-3">
+
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="py-3 text-center" *ngIf="preview">
+        <img [src]="preview ? preview :'assets/images/profiles/no-image.png'" class="img-fluid rounded-circle mb-2" width="100" height="100">
+      </div>
+      <input [class.hideInputFile]="isModImg" class="custom-file-input" type="file" id="photo" [formControl]="formUser.controls.photo" (change)="uploadFile($event)">
+      <p *ngIf="isModImg">
+        <a class="delete" (click)="deleteImage()">Rimuovi</a>
+      </p>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <hr>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <select class="form-select" id="role" aria-label="Tipo Account" formControlName="role">
+          <option *ngFor="let el of roles" [value]="el.value">{{el.label}}</option>
+        </select>
+        <label for="role">Tipo Account</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <select class="form-select" id="status" aria-label="Stato" formControlName="status">
+          <option *ngFor="let el of status" [value]="el.value">{{el.label}}</option>
+        </select>
+        <label for="status">Stato</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="position" formControlName="position" placeholder="Posizione">
+        <label for="position">Posizione</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="site" formControlName="site" placeholder="Sede">
+        <label for="site">Sede</label>
+      </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nome">
+        <label for="name">Nome</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="surname" formControlName="surname" placeholder="Cognome">
+        <label for="surname">Cognome</label>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="address" formControlName="address" placeholder="Indirizzo">
+        <label for="address">Indirizzo</label>
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="city" formControlName="city" placeholder="Città">
+        <label for="city">Città</label>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="cap" formControlName="cap" placeholder="Cap">
+        <label for="cap">Cap</label>
+      </div>
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="province" formControlName="province" placeholder="Provincia">
+        <label for="province">Provincia</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="tel" formControlName="tel" placeholder="Tel">
+        <label for="tel">Tel</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-3">
+      <div class="form-floating">
+        <input type="text" class="form-control" id="mobile" formControlName="mobile" placeholder="Mobile">
+        <label for="mobile">Mobile</label>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+      <div class="form-floating">
+        <input type="password" class="form-control" id="repeatPassword" formControlName="repeatPassword" placeholder="Ripeti Password">
+        <label for="repeatPassword">Ripeti Password</label>
+      </div>
+    </div>
+
+  </div>
+</form>

@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+  <app-form-user #userForm *ngIf="type ==='user'" (eventFormUser)="sendForm($event)" (eventFormUserValidity)="getFormValidity()" [isNewUser]="true"></app-form-user>
+</div>
+<div class="modal-footer d-flex justify-content-between">
+  <button type="button" class="btn btn-danger" (click)="close('close')">Chiudi</button>
+  <button type="button" class="btn btn-success" (click)="close('confirm')" [disabled]="!formValid">Conferma</button>
+</div>

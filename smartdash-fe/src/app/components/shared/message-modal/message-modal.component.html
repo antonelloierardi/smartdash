@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+  <div class="alert {{alertType}}" role="alert" *ngIf="alertType">
+    <p>
+      {{message}}
+    </p>
+  </div>
+</div>
+<div class="modal-footer d-flex justify-content-between">
+  <button type="button" class="btn btn-danger" (click)="close('close')">Chiudi</button>
+  <button *ngIf="action === 'delete'" type="button" class="btn btn-success" (click)="close('confirm-del')">Conferma</button>
+  <button *ngIf="action === 'update'" type="button" class="btn btn-success" (click)="close('confirm-mod')">Conferma</button>
+  <button *ngIf="action === 'new'" type="button" class="btn btn-success" (click)="close('confirm-new')">Conferma</button>
+</div>
